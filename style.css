@@ -10,6 +10,9 @@ body{
     overflow-y: hidden;
     background-color: black;
 }
+b{
+  color: white;
+}
 .val{
   margin-right: 0%;
 }

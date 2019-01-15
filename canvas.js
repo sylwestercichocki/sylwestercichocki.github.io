@@ -15,6 +15,7 @@ let neighbourhood = 'neumann';
 let periodic = false;
 let play = false;
 let teofils = document.querySelectorAll(".teofil");
+let array = [];
 teofils[1].checked=true;
 teofils[3].checked=true;
 teofils[4].checked=true;
@@ -115,6 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.reset').addEventListener('click', function() {
         play = false;
         drawMode = false;
+        array=[];
         c.clearRect(0,0,canvas.width,canvas.height);
         init(size);
         drawing.drawSeeds();
@@ -123,6 +125,30 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.step').addEventListener('click', function() {
         drawing.drawStep();
+    });
+});
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.preset').addEventListener('click', function() {
+        space = undefined;
+        space = new Space(size);
+        space.init();
+        space.setEven();
+        drawing = new Drawing();
+        drawing.init(space);
+        drawing.drawSeeds();
+        grainCurrentID.innerHTML = space.currentId-1;
+    });
+});
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.last').addEventListener('click', function() {
+        space = undefined;
+        space = new Space(size);
+        space.init();
+        space.setLast();
+        drawing = new Drawing();
+        drawing.init(space);
+        drawing.drawSeeds();
+        grainCurrentID.innerHTML = space.currentId-1;
     });
 });
 document.addEventListener('DOMContentLoaded', function() {
@@ -236,7 +262,7 @@ function Space(size){
     this.currentId = 1;
     this.lattice = new Array(this.size);
     this.latticeTemp = new Array(this.size);
-    this.array = [];
+    
 
     this.init = function(){
         this.emptyCells = (this.size-2)*(this.size-2);
@@ -643,11 +669,12 @@ function Space(size){
     };
 
     this.setSeeds = function(num){
+        array.push(num);
         for(var i=0;i<num;++i){
             x=Math.floor(Math.random() * (this.size-4)) + 2;
             y=Math.floor(Math.random() * (this.size-4)) + 2;
-            this.array.push(x);
-            this.array.push(y);
+            array.push(x);
+            array.push(y);
             if(this.lattice[x][y].ID == 0){
                 r=Math.floor(Math.random() * 238 + 16);
                 g=Math.floor(Math.random() * 238 + 16);
@@ -660,6 +687,47 @@ function Space(size){
                 ++this.currentId;
                 --this.emptyCells;
             }
+        }
+    };
+    this.setEven = function(){
+        this.num = Math.floor(size/50)
+        for(var i=0;i<this.num;++i){
+            for(var j=0;j<this.num;++j){
+                x = i*Math.floor(size/this.num)+Math.floor(Math.floor(size/this.num)/2);
+                y = j*Math.floor(size/this.num)+Math.floor(Math.floor(size/this.num)/2);
+                
+                if(this.lattice[x][y].ID == 0){
+                    r=Math.floor(Math.random() * 238 + 16);
+                    g=Math.floor(Math.random() * 238 + 16);
+                    b=Math.floor(Math.random() * 238 + 16);
+                    this.lattice[x][y].color = "#" + r.toString(16).toUpperCase() +
+                    g.toString(16).toUpperCase()+
+                    b.toString(16).toUpperCase();
+                    this.lattice[x][y].ID = this.currentId;
+                    this.lattice[x][y].seed = true;
+                    ++this.currentId;
+                    --this.emptyCells;
+                }
+            }
+        }
+    };
+    this.setLast = function(){
+        for(var i=1;i<array[0];++i){
+                x = array[i];
+                y = array[i+1];
+                
+                if(this.lattice[x][y].ID == 0){
+                    r=Math.floor(Math.random() * 238 + 16);
+                    g=Math.floor(Math.random() * 238 + 16);
+                    b=Math.floor(Math.random() * 238 + 16);
+                    this.lattice[x][y].color = "#" + r.toString(16).toUpperCase() +
+                    g.toString(16).toUpperCase()+
+                    b.toString(16).toUpperCase();
+                    this.lattice[x][y].ID = this.currentId;
+                    this.lattice[x][y].seed = true;
+                    ++this.currentId;
+                    --this.emptyCells;
+                }
         }
     };
     this.setSeed = function(x,y,id,color){
