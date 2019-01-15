@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>T</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                    <div class="col-9" id="canvasWidth"><canvas></canvas></div>
+                    <div class="col-3 text-right ">
+                        <div class="row">
+                            <div class="col-2"><b>Resolution:</b></div>
+                            <div class="col-8"><input type="range" min="100" max="300" value="200" class="slider" id="size"></div>
+                            <div class="col-2"><b><span id="sizeValue"></span></b></div>
+                        </div>
+                        <div class="row"  >
+                            <div class="col-2"><b>Nucleons:</b></div>
+                            <div class="col-8"><input type="range" min="1" max="100" value="10" class="slider" id="nucleons"></div>
+                            <div class="col-2"><b><span id="nucleonsValue"></span></b></div>
+                        </div>
+                        <br>
+                        <div class="row text-left">
+                            <div class="col-4"><b>Periodic</b></div>
+                            <div class="col-2"><input type="checkbox" id="periodic"></div>
+                            <div class="col-6"></div>
+                        </div>
+                        <div class="row text-left">
+                            <div class="col-4"><b>Neumann</b></div>
+                            <div class="col-2"><input type="radio" name="neighbours" id="neumann"></input></div>
+                            <div class="col-4"><b>Moore</b></div>
+                            <div class="col-2"><input type="radio" name="neighbours" id="moore"></input></div>
+                            
+                        </div>
+                        <div class ="row text-left">
+                            <div class="col-4"><b>Pentagonal</b></div>
+                            <div class="col-2"><input type="radio" name="neighbours" id="pent"></input></div>
+                            <div class="col-4"><b>Hexagonal</b></div>
+                            <div class="col-2"><input type="radio" name="neighbours" id="hex"></input></div>
+                        </div>
+                        <div class ="row text-left">
+                            <div class="col-4"><b>User</b></div>
+                            <div class="col-2"><input type="radio" name="neighbours" id="user"></input></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-1"><input type="checkbox" class="teofil"></div>
+                            <div class="col-1"><input type="checkbox" class="teofil"></div>
+                            <div class="col-1"><input type="checkbox" class="teofil"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-1"><input type="checkbox" class="teofil"></div>
+                            <div class="col-1"></div>
+                            <div class="col-1"><input type="checkbox" class="teofil"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-1"><input type="checkbox" class="teofil"></div>
+                            <div class="col-1"><input type="checkbox" class="teofil"></div>
+                            <div class="col-1"><input type="checkbox" class="teofil"></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-4 text-left"><button class="start">Run</button></div>
+                            <div class="col-4 text-left"><button class="reset">Reset</button></div>
+                            <div class="col-4 text-left"><button class="step">Step</button></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-4 text-left"><button class="drawMode">Draw</button></div>
+                        </div>
+                        <br><br>
+                        <div class="row">
+                            <div class="col-3"><b>ID:</b></div>
+                            <div class="col-3"><b><span id="grainId"></span></b></div>
+                            <div class="col-3"><b>Color:</span></b></div>
+                            <div class="col-3"><b><span id="grainColor"></span></b></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                                <div class="col-3"><b>CurrentID:</b></div>
+                                <div class="col-3"><b><span id="currentId"></span></b></div>
+                            </div>
+                    </div>
+            </div>
+            <div class="row">
+                <div class="col-12"><img src="Bez tytułu.png" alt="Italian Trulli"></div>
+                
+            </div>
+        </div>
+        
+
+
+        <script src="canvas.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </body>
+</html>
