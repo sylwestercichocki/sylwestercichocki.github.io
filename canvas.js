@@ -561,14 +561,14 @@ function Space(size){
                 if (i == 0 && j == 0) continue;
                 if(this.lattice[x+i][y+j].ID == 0) continue;
 
-                if (i == -1 && j == -1)if(!teofils[0].checked)continue; 
+                if (i == -1 && j == -1)if(!teofils[7].checked)continue; 
                 if (i == -1 && j == 0) if(!teofils[4].checked) continue;
                 if (i == -1 && j == 1) if(!teofils[2].checked) continue;
                 if (i == 0 && j == -1) if(!teofils[6].checked) continue;
                 if (i == 0 && j == 1)  if(!teofils[1].checked)continue;
                 if (i == 1 && j == -1) if(!teofils[5].checked) continue;
                 if (i == 1 && j == 0)  if(!teofils[3].checked)continue;
-                if (i == 1 && j == 1)  if(!teofils[7].checked)continue;
+                if (i == 1 && j == 1)  if(!teofils[0].checked)continue;
 
                 for (var w=0;w<number;++w){
                     if(id[w] == this.lattice[x+i][y+j].ID){
